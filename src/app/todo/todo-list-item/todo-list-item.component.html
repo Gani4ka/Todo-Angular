@@ -1,14 +1,27 @@
-<li key={id} id={id} class='list-group-item'>
-    <span className={classNames}>
-            <span class='todo-list-item-label' [class.test]='todo.done' (click)='handleItemClick()'>
-                {{todo.label}}
-        </span>
-        <button type='button' class='btn btn-outline-success btn-sm float-right'>
-            <i class='fa fa-exclamation'></i>
-        </button>
-
-        <button type='button' class='btn btn-outline-danger btn-sm float-right' >
-            <i class='fa fa-trash-o'></i>
-        </button>
+<li key="{id}" id="{id}" class="list-group-item">
+  <span className="{classNames}">
+    <span
+      class="todo-list-item-label"
+      [class.done]="todo.done"
+      [class.important]="todo.important"
+      (click)="handleItemClick()"
+    >
+      {{ todo.label }}
     </span>
+    <button
+      type="button"
+      class="btn btn-outline-success btn-sm float-right"
+      (click)="handleImportantClick()"
+    >
+      <i class="fa fa-exclamation"></i>
+    </button>
+
+    <button
+      type="button"
+      class="btn btn-outline-danger btn-sm float-right"
+      (click)="handleDeleteClick()"
+    >
+      <i class="fa fa-trash-o"></i>
+    </button>
+  </span>
 </li>
