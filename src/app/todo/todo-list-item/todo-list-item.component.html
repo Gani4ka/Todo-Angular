@@ -1,9 +1,8 @@
 <li key={id} id={id} class='list-group-item'>
     <span className={classNames}>
-        <span class='todo-list-item-label' (click)='handleItemClick()'>
-            {{todo.label}}
+            <span class='todo-list-item-label' [class.test]='todo.done' (click)='handleItemClick()'>
+                {{todo.label}}
         </span>
-
         <button type='button' class='btn btn-outline-success btn-sm float-right'>
             <i class='fa fa-exclamation'></i>
         </button>
