@@ -1,0 +1,5 @@
+<app-todo-header [toDo]='todoCount' [done]='doneCount'></app-todo-header>
+<app-todo-list>
+    <app-todo-list-item *ngFor='let item of todos' [todo]='item' (onItemClick)="itemHandler($event)"></app-todo-list-item>
+</app-todo-list>
+<app-todo-add-form (onFormSubmit)="formHandler($event)"></app-todo-add-form>

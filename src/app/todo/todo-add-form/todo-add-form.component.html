@@ -1,0 +1,10 @@
+<form class='item-add-form d-flex' (submit)='handleSubmit($event)' >
+    <input
+      type='text'
+      class='form-control'
+      placeholder='What needs to be done'
+      value={{inputValue}}
+      (change)='handleChange($event)'
+    />
+    <button class='btn btn-outline-secondary'>Add</button>
+  </form>

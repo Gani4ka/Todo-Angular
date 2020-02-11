@@ -1,0 +1,15 @@
+<li key={id} id={id} class='list-group-item'>
+    <span className={classNames}>
+        <span class='todo-list-item-label' (click)='handleItemClick()'>
+            {{todo.label}}
+        </span>
+
+        <button type='button' class='btn btn-outline-success btn-sm float-right'>
+            <i class='fa fa-exclamation'></i>
+        </button>
+
+        <button type='button' class='btn btn-outline-danger btn-sm float-right' >
+            <i class='fa fa-trash-o'></i>
+        </button>
+    </span>
+</li>
