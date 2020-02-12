@@ -1,9 +1,10 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import {Component, Output, EventEmitter, ChangeDetectionStrategy} from '@angular/core';
 
 @Component({
   selector: 'app-todo-add-form',
   templateUrl: './todo-add-form.component.html',
-  styleUrls: ['./todo-add-form.component.css']
+  styleUrls: ['./todo-add-form.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TodoAddFormComponent {
 

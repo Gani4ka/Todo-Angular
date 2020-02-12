@@ -1,65 +1,43 @@
-import { Component } from "@angular/core";
-import { TodoModel } from "./models/todo.model";
-
-const initialState: TodoModel[] = [
-  {
-    label: "1",
-    important: false,
-    done: false,
-    id: "i1"
-  },
-  {
-    label: "2",
-    important: false,
-    done: false,
-    id: "i2"
-  },
-  {
-    label: "3",
-    important: false,
-    done: false,
-    id: "i3"
-  }
-];
+import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {TodoModel} from './models/todo.model';
+import {TodosQuery} from './state/todos.query';
+import {TodosService} from './state/todos.service';
+import {ID} from '@datorama/akita';
 
 @Component({
-  selector: "app-todo",
-  templateUrl: "./todo.component.html",
-  styleUrls: ["./todo.component.css"]
+  selector: 'app-todo',
+  templateUrl: './todo.component.html',
+  styleUrls: ['./todo.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TodoComponent {
-  todos = initialState;
+  todos = this.todosQuery.selectAll();
+  doneCount = this.todosQuery.doneCount;
+  todoCount = this.todosQuery.todoCount;
 
-  get doneCount(): number {
-    return this.todos.filter((el: TodoModel) => el.done).length;
+  constructor(
+    private todosQuery: TodosQuery,
+    private todosService: TodosService
+  ) {
   }
 
-  get todoCount(): number {
-    return this.todos.length - this.doneCount;
+  formHandler(label: string): void {
+    this.todosService.add(label);
   }
 
-  formHandler(data: string): void {
-    const newItem = new TodoModel(data);
-    this.todos = [...this.todos, newItem];
+  itemHandler(item: TodoModel): void {
+    this.todosService.toggleDone(item);
   }
 
-  itemHandler(data: string): void {
-    this.todos.map(item => {
-      if (item.id === data) {
-        item.done = !item.done;
-      }
-    });
+  importantHandler(item: TodoModel): void {
+    this.todosService.toggleImportant(item);
   }
 
-  importantHandler(data: string): void {
-    this.todos.map(item => {
-      if (item.id === data) {
-        item.important = !item.important;
-      }
-    });
+  deleteHandler(id: ID): void {
+    this.todosService.remove(id);
   }
 
-  deleteHandler(data: string): void {
-    this.todos = this.todos.filter(item => item.id !== data);
+  trackById(index: number, item: TodoModel): ID {
+    return item.id;
   }
 }

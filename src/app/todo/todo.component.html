@@ -1,11 +1,11 @@
-<app-todo-header [toDo]="todoCount" [done]="doneCount"></app-todo-header>
+<app-todo-header [toDo]="todoCount | async" [done]="doneCount | async"></app-todo-header>
 <app-todo-list>
   <app-todo-list-item
-    *ngFor="let item of todos"
+    *ngFor="let item of todos | async; trackBy: trackById"
     [todo]="item"
-    (onItemClick)="itemHandler($event)"
-    (onImportantClick)="importantHandler($event)"
-    (onDeleteClick)="deleteHandler($event)"
+    (onItemClick)="itemHandler(item)"
+    (onImportantClick)="importantHandler(item)"
+    (onDeleteClick)="deleteHandler(item.id)"
   ></app-todo-list-item>
 </app-todo-list>
 <app-todo-add-form (onFormSubmit)="formHandler($event)"></app-todo-add-form>

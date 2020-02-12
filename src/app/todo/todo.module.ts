@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
-import { TodoComponent } from './todo.component';
-import { TodoHeaderComponent } from './todo-header/todo-header.component';
-import { TodoAddFormComponent } from './todo-add-form/todo-add-form.component';
-import { TodoListComponent } from './todo-list/todo-list.component';
-import { TodoListItemComponent } from './todo-list-item/todo-list-item.component';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {TodoComponent} from './todo.component';
+import {TodoHeaderComponent} from './components/todo-header/todo-header.component';
+import {TodoAddFormComponent} from './components/todo-add-form/todo-add-form.component';
+import {TodoListComponent} from './components/todo-list/todo-list.component';
+import {TodoListItemComponent} from './components/todo-list-item/todo-list-item.component';
+import {CommonModule} from '@angular/common';
 
 
 @NgModule({
@@ -16,9 +16,9 @@ import { CommonModule } from '@angular/common';
     TodoListComponent,
     TodoListItemComponent
   ],
-  providers: [],
   exports: [
-      TodoComponent
+    TodoComponent
   ]
 })
-export class TodoModule { }
+export class TodoModule {
+}
